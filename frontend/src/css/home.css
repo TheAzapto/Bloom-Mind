@@ -1,0 +1,43 @@
+body {
+  background-color: whitesmoke;
+}
+
+.Content {
+  margin: 7vh 1vw 0 1vw;
+  height: 93vh;
+  width: 99vw;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.text-area p {
+  font-size: 6rem;
+  width: 49vw;
+}
+
+.img-win {
+  width: 49vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-win img {
+  width: 45vw;
+  transition: ease-out 1s;
+}
+
+.img-win img:hover {
+  width: 46vw;
+}
+
+@media screen and (max-width: 871px) {
+  .img-win img {
+    width: 0px;
+  }
+
+  .text-area {
+    width: 99vw;
+  }
+}

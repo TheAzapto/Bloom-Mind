@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 7vh;
+  min-height: 55px;
+  width: 100%;
+  display: flex;
+}
+
+.left {
+  display: flex;
+  /* background-color: aqua; */
+  width: 50vw;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.left a {
+  padding: 0.5rem;
+  text-align: left;
+  text-decoration: none;
+  font-family: "Limelight", sans-serif;
+  font-size: 3rem;
+  color: rebeccapurple;
+}
+
+.right {
+  display: flex;
+  width: 50vw;
+  justify-content: flex-end;
+}
+
+.link-list {
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link-list a {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #1c1c1c;
+  transition: ease-out 200ms;
+}
+
+.link-list a:hover {
+  color: rebeccapurple;
+  background-color: rgba(102, 51, 153, 0.137);
+}
+
+
+.link-list a::after {
+  color: #1c1c1c;
+}
