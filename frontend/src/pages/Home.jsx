@@ -22,7 +22,7 @@ function Home() {
           <Bnt text="Help Me" action={routeChange} />
         </div>
         <div className="img-win">
-          <img src="/image/Meditation.webp" />
+          <img src="/image/Meditation.webp" alt="a cutie" />
         </div>
       </div>
     </>
