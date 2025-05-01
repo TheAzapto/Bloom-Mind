@@ -47,13 +47,13 @@
   text-decoration: none;
   color: #1c1c1c;
   transition: ease-out 200ms;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .link-list a:hover {
   color: rebeccapurple;
-  background-color: rgba(102, 51, 153, 0.137);
+  background-color: rgba(102, 51, 153, 0.5);
 }
-
 
 .link-list a::after {
   color: #1c1c1c;
