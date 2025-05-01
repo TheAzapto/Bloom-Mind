@@ -15,23 +15,29 @@ pipeline {
 
         stage('Build Frontend Image') {
             steps {
-                bat 'cd frontend && docker build -t $FRONTEND_IMAGE .'
+                powershell 'cd frontend; docker build -t ${env.FRONTEND_IMAGE} .'
             }
         }
 
         stage('Build Backend Image') {
             steps {
-                bat 'cd backend && docker build -t $BACKEND_IMAGE .'
+                powershell 'cd backend; docker build -t ${env.BACKEND_IMAGE} .'
             }
         }
 
         stage('Start Services with Docker Compose') {
             steps {
-                // Stop and remove existing containers
-                bat 'docker-compose down'
+                // Stop existing containers
+                powershell 'docker-compose down'
 
                 // Start new containers
-                bat 'docker-compose up -d'
+                powershell 'docker-compose up -d'
+            }
+        }
+
+        stage('Verify Running Containers') {
+            steps {
+                powershell 'docker ps'
             }
         }
     }
@@ -41,7 +47,7 @@ pipeline {
             echo "✅ Application is now running!"
         }
         failure {
-            echo "❌ Pipeline failed!"
+            echo "❌ Pipeline failed. Check logs above."
         }
     }
 }
