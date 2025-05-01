@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = "react-app:latest"
-        BACKEND_IMAGE = "node-api:latest"
     }
 
     stages {
@@ -15,13 +13,13 @@ pipeline {
 
         stage('Build Frontend Image') {
             steps {
-                powershell 'cd frontend; docker build -t ${env.FRONTEND_IMAGE} .'
+                powershell 'cd frontend; docker build -t react-app:latest .'
             }
         }
 
         stage('Build Backend Image') {
             steps {
-                powershell 'cd backend; docker build -t ${env.BACKEND_IMAGE} .'
+                powershell 'cd backend; docker build -t node-api:latest .'
             }
         }
 
