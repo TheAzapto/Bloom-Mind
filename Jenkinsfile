@@ -15,23 +15,23 @@ pipeline {
 
         stage('Build Frontend Image') {
             steps {
-                sh 'cd frontend && docker build -t $FRONTEND_IMAGE .'
+                bat 'cd frontend && docker build -t $FRONTEND_IMAGE .'
             }
         }
 
         stage('Build Backend Image') {
             steps {
-                sh 'cd backend && docker build -t $BACKEND_IMAGE .'
+                bat 'cd backend && docker build -t $BACKEND_IMAGE .'
             }
         }
 
         stage('Start Services with Docker Compose') {
             steps {
                 // Stop and remove existing containers
-                sh 'docker-compose down'
+                bat 'docker-compose down'
 
                 // Start new containers
-                sh 'docker-compose up -d'
+                bat 'docker-compose up -d'
             }
         }
     }
