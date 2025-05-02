@@ -1,7 +1,13 @@
-FROM node:18
+# backend/Dockerfile
+FROM python:3.9-slim
+
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
+
 EXPOSE 5000
-CMD ["node", "server.js"]
+
+CMD ["python", "app.py"]  # Adjust based on your actual app entrypoint

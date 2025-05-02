@@ -1,48 +1,42 @@
 pipeline {
     agent any
+    
+    environment {
+        DOCKER_COMPOSE = 'docker-compose'
+    }
 
     stages {
-        stage('Clone Repository') {
+        stage('Environment Setup') {
             steps {
-                checkout scm
+                echo "Initializing Docker environment"
             }
         }
 
-        stage('Build Frontend Image') {
+        stage('Build & Test') {
             steps {
-                powershell 'cd frontend; docker build -t react-app:latest .'
+                echo "Building Docker containers"
+                sh "${DOCKER_COMPOSE} build"
+                
+                echo "Starting containers"
+                sh "${DOCKER_COMPOSE} up -d"
+                
+                echo "Running tests (add your test commands here)"
+                // Add test commands for frontend/backend
             }
         }
 
-        stage('Build Backend Image') {
+        stage('Deploy') {
             steps {
-                powershell 'cd backend; docker build -t node-api:latest .'
-            }
-        }
-
-        stage('Start Services with Docker Compose') {
-            steps {
-                // Stop existing containers
-                powershell 'docker-compose down'
-
-                // Start new containers
-                powershell 'docker-compose up -d'
-            }
-        }
-
-        stage('Verify Running Containers') {
-            steps {
-                powershell 'docker ps'
+                echo "Redeploying application"
+                sh "${DOCKER_COMPOSE} down"
+                sh "${DOCKER_COMPOSE} up -d"
             }
         }
     }
 
     post {
-        success {
-            echo "✅ Application is now running!"
-        }
-        failure {
-            echo "❌ Pipeline failed. Check logs above."
+        always {
+            echo "Pipeline finished"
         }
     }
 }

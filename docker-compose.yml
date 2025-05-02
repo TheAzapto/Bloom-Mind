@@ -2,15 +2,27 @@ version: '3.8'
 
 services:
   frontend:
-    image: react-app:latest
+    build:
+      context: ./frontend
     ports:
       - "3000:3000"
-    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
 
   backend:
-    image: node-api:latest
+    build:
+      context: ./backend
     ports:
       - "5000:5000"
     environment:
-      - NODE_ENV=production
-    restart: unless-stopped
+      - FLASK_ENV=development
+    volumes:
+      - ./backend:/app
+    # Example environment variables for DB connections etc.
+    # environment:
+    #   DATABASE_URL: postgres://user:password@db:5432/dbname
