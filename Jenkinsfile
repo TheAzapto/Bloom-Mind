@@ -15,10 +15,10 @@ pipeline {
         stage('Build & Test') {
             steps {
                 echo "Building Docker containers"
-                sh "${DOCKER_COMPOSE} build"
+                powershell "${DOCKER_COMPOSE} build"
                 
                 echo "Starting containers"
-                sh "${DOCKER_COMPOSE} up -d"
+                powershell "${DOCKER_COMPOSE} up -d"
                 
                 echo "Running tests (add your test commands here)"
                 // Add test commands for frontend/backend
@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Redeploying application"
-                sh "${DOCKER_COMPOSE} down"
-                sh "${DOCKER_COMPOSE} up -d"
+                powershell "${DOCKER_COMPOSE} down"
+                powershell "${DOCKER_COMPOSE} up -d"
             }
         }
     }
