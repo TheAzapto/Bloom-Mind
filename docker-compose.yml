@@ -23,6 +23,3 @@ services:
       - FLASK_ENV=development
     volumes:
       - ./backend:/app
-    # Example environment variables for DB connections etc.
-    # environment:
-    #   DATABASE_URL: postgres://user:password@db:5432/dbname
