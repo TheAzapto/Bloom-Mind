@@ -16,7 +16,7 @@ def preprocess_text(text):
     return " ".join(tokens)
 
 # Loading Saved Model
-model = joblib.load('backend\model\mental_health_model.joblib')
+model = joblib.load('.\model\mental_health_model.joblib')
 
 # Define a prediction function
 def predict_status(text):
