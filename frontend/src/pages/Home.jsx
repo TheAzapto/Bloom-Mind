@@ -19,7 +19,7 @@ function Home() {
       <div className="Content">
         <div className="text-area">
           <p>Your Mental Health Matters</p>
-          <Bnt text="Help Me" action={routeChange} />
+          <Bnt text="Find Out" action={routeChange} />
         </div>
         <div className="img-win">
           <img src="/image/Meditation.webp" alt="a cutie" />

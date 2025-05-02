@@ -24,12 +24,12 @@ body {
 }
 
 .img-win img {
-  width: 45vw;
-  transition: ease-out 1s;
+  width: 40vw;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s;
 }
 
 .img-win img:hover {
-  width: 46vw;
+  width: 45vw;
 }
 
 @media screen and (max-width: 871px) {

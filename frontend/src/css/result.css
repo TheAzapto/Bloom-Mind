@@ -1,0 +1,56 @@
+body {
+  margin-top: 7vh;
+}
+
+.content {
+  display: flex;
+  height: 93vh;
+}
+
+.left-content {
+  padding: 2rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-content h1 {
+  font-size: 4rem;
+}
+
+.result-txt {
+  font-size: 5rem;
+  color: rebeccapurple;
+}
+
+.right-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-content img {
+  width: 40vw;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s;
+}
+
+.right-content img:hover {
+  width: 45vw;
+}
+
+@media screen and (max-width: 971px) {
+  .left-content {
+    width: 100%;
+    align-items: center;
+  }
+  .right-content {
+    width: 0%;
+  }
+
+  .right-content img {
+    width: 0;
+  }
+}

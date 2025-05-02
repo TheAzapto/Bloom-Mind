@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import "../css/check.css";
 import Bnt from "../components/Bnt";
-import { Form, ErrorMessage, Field, Formik, FormikProps } from "formik";
+import { useNavigate } from "react-router-dom";
 
 function Check() {
+  const [userInput, setUserInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSubmission = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/process", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: userInput }),
+      });
+
+      const data = await response.json();
+
+      navigate("/result", { state: { result: data.result } }); // Update your component state with the result
+      // console.log(result);
+    } catch (error) {
+      console.log("Error");
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -21,9 +48,11 @@ function Check() {
           <textarea
             className="field-area"
             placeholder="My Recent Post Said ..."
+            value={userInput}
+            onChange={handleChange}
             id="post"
           />
-          <Bnt text="POST" />
+          <Bnt text="POST" action={handleSubmission} />
         </div>
       </div>
     </>
