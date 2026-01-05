@@ -16,7 +16,7 @@ function Check() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/process", {
+      const response = await fetch("http://localhost:5050/process", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: userInput }),
